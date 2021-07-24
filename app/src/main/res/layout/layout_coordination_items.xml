@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView
+    android:layout_margin="10dp"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    app:cardCornerRadius="10dp"
+    app:cardElevation="1dp"
+    android:id="@+id/cardCoordination">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding="15dp">
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:layout_centerHorizontal="true"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:src="@color/purple_700"
+            android:id="@+id/ImgCoordinationPhoto"/>
+
+        <TextView
+            android:layout_centerHorizontal="true"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/app_name"
+            android:fontFamily="@font/segoeuib"
+            android:textSize="14sp"
+            android:layout_below="@id/ImgCoordinationPhoto"
+            android:textColor="@color/blueDark"
+            android:id="@+id/txtCoordinationFunction"/>
+
+        <TextView
+            android:layout_centerHorizontal="true"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/app_name"
+            android:fontFamily="@font/segoeui"
+            android:textSize="14sp"
+            android:layout_below="@id/txtCoordinationFunction"
+            android:textColor="@color/blueDark"
+            android:id="@+id/txtCoordinationFirstName"/>
+
+        <TextView
+            android:layout_centerHorizontal="true"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/app_name"
+            android:fontFamily="@font/segoeui"
+            android:textSize="14sp"
+            android:layout_below="@id/txtCoordinationFirstName"
+            android:textColor="@color/blueDark"
+            android:id="@+id/txtCoordinationName"/>
+
+    </RelativeLayout>
+
+</com.google.android.material.card.MaterialCardView>

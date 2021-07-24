@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "22202919260",
+    "project_id": "campasiliano-15f4a",
+    "storage_bucket": "campasiliano-15f4a.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:22202919260:android:ed2ba9101c6a1b5ae73999",
+        "android_client_info": {
+          "package_name": "com.anywhere.campasiliano"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "22202919260-cufb0ilr9q4pqf8tbetvm1qji6irk8fa.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDfUU2Ge-FcqQdgo_YmxmbI0X5Ar39zd6w"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "22202919260-cufb0ilr9q4pqf8tbetvm1qji6irk8fa.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

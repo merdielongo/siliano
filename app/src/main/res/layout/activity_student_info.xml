@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".views.activities.auth.StudentInfoActivity">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <com.google.android.material.card.MaterialCardView
+            android:layout_width="320dp"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            app:cardElevation="30dp"
+            app:cardCornerRadius="23dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:gravity="center_horizontal"
+                android:padding="30dp">
+
+                <TextView
+                    android:layout_marginBottom="10dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/student_info"
+                    android:textAlignment="center"
+                    android:gravity="center_horizontal"
+                    android:fontFamily="@font/segoeui"
+                    android:textColor="@color/blueDark"/>
+
+
+                <com.google.android.material.button.MaterialButton
+                    app:elevation="15dp"
+                    android:id="@+id/btnEstablishment"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    style="@style/Widget.MaterialComponents.Button.TextButton"
+                    android:textAlignment="textStart"
+                    android:text="@string/establishment"
+                    android:textAllCaps="false"
+                    app:backgroundTint="@color/silver_"
+                    android:textColor="@color/purple_700"
+                    app:strokeWidth="0dp"
+                    android:textSize="13sp"
+                    android:padding="12dp"
+                    tools:ignore="RtlCompat" />
+
+                <com.google.android.material.button.MaterialButton
+                    app:elevation="15dp"
+                    android:id="@+id/btnOrientation"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    style="@style/Widget.MaterialComponents.Button.TextButton"
+                    android:textAlignment="textStart"
+                    android:text="@string/orientation"
+                    android:textAllCaps="false"
+                    app:backgroundTint="@color/silver_"
+                    android:textColor="@color/purple_700"
+                    app:strokeWidth="0dp"
+                    android:textSize="13sp"
+                    android:padding="12dp"
+                    tools:ignore="RtlCompat" />
+
+                <com.google.android.material.button.MaterialButton
+                    app:elevation="15dp"
+                    android:id="@+id/btnPromotion"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    style="@style/Widget.MaterialComponents.Button.TextButton"
+                    android:textAlignment="textStart"
+                    android:text="@string/promotion"
+                    android:textAllCaps="false"
+                    app:backgroundTint="@color/silver_"
+                    android:textColor="@color/purple_700"
+                    app:strokeWidth="0dp"
+                    android:textSize="13sp"
+                    android:padding="12dp"
+                    tools:ignore="RtlCompat" />
+
+                <com.google.android.material.button.MaterialButton
+                    android:visibility="gone"
+                    app:elevation="15dp"
+                    android:id="@+id/btnVacation"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    style="@style/Widget.MaterialComponents.Button.TextButton"
+                    android:textAlignment="textStart"
+                    android:text="@string/vacation"
+                    android:textAllCaps="false"
+                    app:backgroundTint="@color/silver_"
+                    android:textColor="@color/purple_700"
+                    app:strokeWidth="0dp"
+                    android:textSize="13sp"
+                    android:padding="12dp"
+                    tools:ignore="RtlCompat" />
+
+                <com.google.android.material.button.MaterialButton
+                    android:layout_marginTop="15dp"
+                    android:id="@+id/btnSave"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    style="@style/Widget.MaterialComponents.Button.TextButton"
+                    app:backgroundTint="@color/purple_700"
+                    app:cornerRadius="23dp"
+                    android:text="@string/save"
+                    android:textAllCaps="false"
+                    android:textColor="@color/white"
+                    app:strokeWidth="0dp"
+                    android:textSize="13sp"
+                    android:padding="12dp"/>
+
+
+            </LinearLayout>
+
+        </com.google.android.material.card.MaterialCardView>
+
+    </RelativeLayout>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

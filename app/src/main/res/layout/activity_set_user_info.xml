@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    android:orientation="vertical"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".views.activities.auth.SetUserInfoActivity">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <com.google.android.material.card.MaterialCardView
+            android:layout_width="320dp"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            app:cardElevation="30dp"
+            app:cardCornerRadius="23dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:gravity="center_horizontal"
+                android:padding="30dp">
+
+                <de.hdodenhof.circleimageview.CircleImageView
+                    android:layout_marginTop="10dp"
+                    android:layout_width="100dp"
+                    android:layout_height="100dp"
+                    android:layout_gravity="center_horizontal"
+                    android:src="@color/silver"
+                    android:id="@+id/imgUserInfo"
+                    android:layout_marginBottom="10dp"/>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:layout_marginTop="10dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/inputLayoutName"
+                    android:hint="@string/name"
+                    app:hintTextColor="@color/black"
+                    app:boxBackgroundColor="@color/white"
+                    app:boxStrokeWidth="0.8dp"
+                    app:boxStrokeWidthFocused="0.8dp">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:inputType="text"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"/>
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:layout_marginTop="10dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/inputLayoutLastName"
+                    android:hint="@string/last_name"
+                    app:hintTextColor="@color/black"
+                    app:boxBackgroundColor="@color/white"
+                    app:boxStrokeWidth="0.8dp"
+                    app:boxStrokeWidthFocused="0.8dp">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:inputType="text"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"/>
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:layout_marginTop="10dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/inputLayoutFirstName"
+                    android:hint="@string/first_name"
+                    app:hintTextColor="@color/black"
+                    app:boxBackgroundColor="@color/white"
+                    app:boxStrokeWidth="0.8dp"
+                    app:boxStrokeWidthFocused="0.8dp">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:inputType="text"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"/>
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <com.google.android.material.button.MaterialButton
+                        android:layout_marginTop="15dp"
+                        android:id="@+id/btnSex"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_horizontal"
+                        style="@style/Widget.MaterialComponents.Button.TextButton"
+                        android:textAlignment="textStart"
+                        android:text="@string/sex"
+                        android:textAllCaps="false"
+                        android:textColor="@color/blueDark"
+                        app:icon="@drawable/ic_arrow_down"
+                        app:iconGravity="end"
+                        app:strokeWidth="0dp"
+                        android:textSize="13sp"
+                        android:padding="12dp"/>
+
+
+                </RelativeLayout>
+
+                <com.google.android.material.button.MaterialButton
+                    android:layout_marginTop="15dp"
+                    android:id="@+id/btnSave"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    style="@style/Widget.MaterialComponents.Button.TextButton"
+                    app:backgroundTint="@color/purple_700"
+                    app:cornerRadius="23dp"
+                    android:text="@string/save"
+                    android:textAllCaps="false"
+                    android:textColor="@color/white"
+                    android:fontFamily="@font/segoeuib"
+                    app:strokeWidth="0dp"
+                    android:textSize="13sp"
+                    android:padding="12dp"/>
+
+
+            </LinearLayout>
+
+        </com.google.android.material.card.MaterialCardView>
+
+    </RelativeLayout>
+
+</LinearLayout>

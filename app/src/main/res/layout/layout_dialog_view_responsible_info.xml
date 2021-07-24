@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:layout_width="135dp"
+        android:layout_height="135dp"
+        android:src="@color/silver"
+        android:layout_marginTop="20dp"
+        android:layout_marginBottom="20dp"
+        android:layout_gravity="center_horizontal"
+        android:id="@+id/imgUserPhoto"/>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <com.google.android.material.card.MaterialCardView
+            android:layout_width="325dp"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            app:cardElevation="30dp"
+            app:cardCornerRadius="23dp">
+
+            <RelativeLayout
+                android:padding="15dp"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/name"
+                    android:textColor="@color/black"
+                    android:textSize="14sp"
+                    android:id="@+id/txt_name"/>
+
+                <TextView
+                    android:layout_below="@id/txt_name"
+                    android:layout_marginTop="5dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/email"
+                    android:textColor="@color/black"
+                    android:textSize="14sp"
+                    android:id="@+id/txt_email"/>
+
+                <TextView
+                    android:layout_below="@id/txt_email"
+                    android:layout_marginTop="5dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/function"
+                    android:textColor="@color/black"
+                    android:textSize="14sp"
+                    android:id="@+id/txt_function"/>
+
+                <TextView
+                    android:layout_below="@id/txt_function"
+                    android:layout_marginTop="5dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/default_date_txt"
+                    android:textColor="@color/black"
+                    android:textSize="14sp"
+                    android:id="@+id/txt_date"/>
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btnAction"
+                    style="@style/Widget.MaterialComponents.Button.TextButton"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="25dp"
+                    android:layout_below="@id/txt_date"
+                    android:padding="12dp"
+                    android:text="@string/send_conversation"
+                    android:textAllCaps="false"
+                    android:textColor="@color/white"
+                    android:textSize="13sp"
+                    app:backgroundTint="@color/purple_700"
+                    app:cornerRadius="23dp"
+                    app:strokeWidth="0dp" />
+
+
+            </RelativeLayout>
+
+        </com.google.android.material.card.MaterialCardView>
+
+    </RelativeLayout>
+
+
+</LinearLayout>
