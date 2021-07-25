@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    app:cardBackgroundColor="#B3B3B3"
+    app:cardCornerRadius="12dp"
+    app:cardElevation="5dp"
+    android:id="@+id/cardLeader"
+    android:layout_margin="10dp">
+
+    <ImageView
+        android:id="@+id/imgUserPhoto"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scaleType="centerCrop"
+        android:src="@drawable/img"/>
+
+    <LinearLayout
+        android:layout_gravity="bottom"
+        android:padding="5dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:gravity="bottom">
+
+        <LinearLayout
+            android:padding="15dp"
+            android:background="@drawable/b_start"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/txtLeaderName"
+                android:layout_gravity="center"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/name"
+                android:textColor="@color/white"
+                android:fontFamily="@font/segoeui"
+                android:textAllCaps="true"
+                android:textSize="12sp"
+                android:textStyle="bold"/>
+
+            <TextView
+                android:id="@+id/txtLeaderFullName"
+                android:layout_marginTop="-6dp"
+                android:layout_gravity="center"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/last_name"
+                android:textColor="@color/white"
+                android:fontFamily="@font/segoeuib"
+                android:textSize="12sp"/>
+
+            <TextView
+                android:id="@+id/txtLeaderFunction"
+                android:layout_gravity="center"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/cp"
+                android:textColor="@color/white"
+                android:fontFamily="@font/segoeuib"
+                android:textSize="13sp"/>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</com.google.android.material.card.MaterialCardView>

@@ -105,4 +105,10 @@
     <string name="default_date_txt">date</string>
     <string name="send_conversation">Envoyer votre demande</string>
     <string name="view_conversation">Voir la discution</string>
+    <string name="cp">chef de promotion</string>
+    <string name="group_leader">creator</string>
+    <string name="member">member</string>
+    <string name="description">description</string>
+    <string name="default_desc_txt">description</string>
+    <string name="adhesion_d">"Adherer "</string>
 </resources>

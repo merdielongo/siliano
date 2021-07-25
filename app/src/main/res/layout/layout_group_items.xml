@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView
+    android:id="@+id/cardGroup"
+    android:layout_margin="10dp"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="250dp"
+    android:layout_height="300dp"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    app:cardElevation="1dp"
+    app:cardCornerRadius="10dp">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/image"
+            android:layout_width="match_parent"
+            android:layout_height="150dp"
+            app:cardElevation="0dp">
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:id="@+id/imgGroup"
+                android:src="@color/silver"
+                android:scaleType="centerCrop"/>
+
+        </com.google.android.material.card.MaterialCardView>
+
+        <LinearLayout
+            android:padding="15dp"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@id/image"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/member"
+                android:id="@+id/groupName"
+                android:textSize="16sp"
+                android:fontFamily="@font/segoeuib"
+                android:textColor="@color/blueDark"/>
+
+            <TextView
+                android:layout_marginTop="10dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/group_leader"
+                android:textSize="12sp"/>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/username"
+                    android:id="@+id/groupLeaderName"
+                    android:textSize="13sp"
+                    android:fontFamily="@font/segoeuib"
+                    android:textColor="@color/blueDark"/>
+
+                <TextView
+                    android:layout_below="@id/groupLeaderName"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/username"
+                    android:id="@+id/groupLeaderEmail"
+                    android:textSize="13sp"
+                    android:fontFamily="@font/segoeui"
+                    android:textColor="@color/blueDark"/>
+
+                <de.hdodenhof.circleimageview.CircleImageView
+                    android:layout_alignParentEnd="true"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:src="@color/silver"
+                    android:id="@+id/imgUserPhoto"
+                    android:layout_alignParentRight="true" />
+
+            </RelativeLayout>
+
+
+        </LinearLayout>
+
+    </RelativeLayout>
+
+</com.google.android.material.card.MaterialCardView>
