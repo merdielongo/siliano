@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView
+    app:cardElevation="0dp"
+    android:id="@+id/cardPostOne"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <com.google.android.material.card.MaterialCardView
+            app:cardCornerRadius="25dp"
+            android:layout_width="match_parent"
+            android:layout_height="207dp"
+            app:cardElevation="16dp"
+            android:id="@+id/cardPost"
+            android:layout_margin="19dp">
+
+            <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
+                android:id="@+id/txtPostCategory"
+                android:layout_margin="15dp"
+                android:textAllCaps="false"
+                app:elevation="16dp"
+                android:layout_width="wrap_content"
+                android:layout_height="38dp"
+                app:icon="@drawable/elipse"
+                app:iconTint="@color/teal_200"
+                app:iconSize="8dp"
+                android:text="@string/app_name"
+                android:textColor="@color/white"
+                android:textSize="12sp"
+                app:borderWidth="0dp"
+                app:backgroundTint="@color/blueDark"/>
+
+            <ImageView
+                android:id="@+id/imgPostPhoto"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:scaleType="centerCrop"
+                android:src="@drawable/img"/>
+
+        </com.google.android.material.card.MaterialCardView>
+
+        <com.google.android.material.card.MaterialCardView
+            app:cardCornerRadius="25dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:cardElevation="16dp"
+            android:id="@+id/cardPostContent"
+            android:layout_below="@id/cardPost"
+            android:layout_marginTop="-70dp"
+            android:layout_marginRight="19dp"
+            android:layout_marginLeft="19dp"
+            android:layout_marginBottom="30dp">
+
+            <RelativeLayout
+                android:padding="20dp"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/app_name"
+                    android:fontFamily="@font/segoeuib"
+                    android:textColor="@color/black"
+                    android:textSize="15sp"
+                    android:id="@+id/txtPostTitle"/>
+
+                <TextView
+                    android:layout_marginBottom="10dp"
+                    android:layout_below="@id/txtPostTitle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/app_name"
+                    android:fontFamily="@font/segoeui"
+                    android:textColor="@color/black"
+                    android:textSize="14sp"
+                    android:textAlignment="textStart"
+                    android:id="@+id/txtPostContent"
+                    android:gravity="start" />
+
+                <TextView
+                    android:layout_below="@id/txtPostContent"
+                    android:layout_marginBottom="10dp"
+                    android:layout_alignParentEnd="true"
+                    android:layout_alignParentBottom="true"
+                    android:gravity="bottom"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/app_name"
+                    android:fontFamily="@font/segoeuisl"
+                    android:textColor="@color/black"
+                    android:textSize="12sp"
+                    android:id="@+id/txtPostDate"
+                    android:layout_alignParentRight="true" />
+
+            </RelativeLayout>
+
+
+        </com.google.android.material.card.MaterialCardView>
+
+    </RelativeLayout>
+
+
+</com.google.android.material.card.MaterialCardView>

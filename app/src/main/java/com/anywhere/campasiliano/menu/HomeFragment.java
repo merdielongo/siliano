@@ -1,5 +1,7 @@
 package com.anywhere.campasiliano.menu;
 
+import android.app.ProgressDialog;
+import android.os.AsyncTask;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -14,17 +16,22 @@ import androidx.viewpager2.widget.MarginPageTransformer;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ProgressBar;
 
 import com.anywhere.campasiliano.adapters.CoordinationAdapter;
+import com.anywhere.campasiliano.adapters.FeedAdapter;
 import com.anywhere.campasiliano.adapters.GroupAdapter;
 import com.anywhere.campasiliano.adapters.LeaderAdapter;
 import com.anywhere.campasiliano.adapters.ResponsibleAdapter;
+import com.anywhere.campasiliano.common.HTTPDataHandler;
 import com.anywhere.campasiliano.databinding.FragmentHomeBinding;
 import com.anywhere.campasiliano.models.chats.Group;
 import com.anywhere.campasiliano.models.etablishment.Coordination;
 import com.anywhere.campasiliano.models.etablishment.Responsibles;
+import com.anywhere.campasiliano.models.posts.RssObject;
 import com.anywhere.campasiliano.models.users.Leader;
 import com.anywhere.campasiliano.models.users.Student;
+import com.anywhere.campasiliano.utils.anywhere.Anywhere;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
@@ -32,6 +39,7 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.google.gson.Gson;
 
 import org.jetbrains.annotations.NotNull;
 
@@ -56,10 +64,15 @@ public class HomeFragment extends Fragment {
     private LeaderAdapter leaderAdapter;
     private GroupAdapter groupAdapter;
 
+    private RssObject rssObject;
+    private final String RSS_LINK = "https://www.france24.com/fr/afrique/rss";
+    private final String RSS_to_Json_API = "https://api.rss2json.com/v1/api.json?rss_url=";
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         binding = FragmentHomeBinding.inflate(inflater, container, false);
+        Anywhere.activity = requireActivity();
         return binding.getRoot();
     }
 
@@ -96,6 +109,7 @@ public class HomeFragment extends Fragment {
         binding.recyclerViewEvent.setHasFixedSize(true);
         binding.recyclerViewEvent.setLayoutManager(new GridLayoutManager(requireActivity(), 2));
 
+        postsFeed();
         function();
         binding.swipeHome.setOnRefreshListener(this::function);
 
@@ -103,6 +117,41 @@ public class HomeFragment extends Fragment {
 
     private void function() {
         getResponsibles();
+    }
+
+    private void postsFeed() {
+        Anywhere.message("test bug");
+        AsyncTask<String, String, String> loadRSSAsync = new AsyncTask<String, String, String>() {
+
+            ProgressDialog dialog = new ProgressDialog(requireActivity());
+
+            @Override
+            protected void onPreExecute() {
+                dialog.setMessage("Please wait ...");
+                dialog.show();
+            }
+
+            @Override
+            protected String doInBackground(String... strings) {
+                String result;
+                HTTPDataHandler httpDataHandler = new HTTPDataHandler();
+                result = httpDataHandler.GetHTTPData(strings[0]);
+                return result;
+            }
+
+            @Override
+            protected void onPostExecute(String s) {
+                dialog.dismiss();
+                rssObject = new Gson().fromJson(s, RssObject.class);
+                Anywhere.message("test");
+                FeedAdapter feedAdapter = new FeedAdapter(rssObject, requireContext());
+                binding.recyclerViewPost.setAdapter(feedAdapter);
+                feedAdapter.notifyDataSetChanged();
+            }
+        };
+        StringBuilder builder = new StringBuilder(RSS_to_Json_API);
+        builder.append(RSS_LINK);
+        loadRSSAsync.execute(builder.toString());
     }
 
     private void getResponsibles() {
@@ -201,9 +250,12 @@ public class HomeFragment extends Fragment {
                     for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
                         Group group = dataSnapshot.getValue(Group.class);
                         assert group != null;
-                        if (student.equals(group.getEstablishment())) {
+                        if (student.getEstablishment().equals(group.getEstablishment())) {
                             groupList.add(group);
                         }
+                        groupAdapter = new GroupAdapter(requireActivity(), groupList);
+                        binding.recyclerViewGroup.setAdapter(groupAdapter);
+                        binding.swipeHome.setRefreshing(false);
                     }
                 }
             }
