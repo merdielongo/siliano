@@ -19,6 +19,7 @@ import android.view.ViewGroup;
 import android.widget.ProgressBar;
 
 import com.anywhere.campasiliano.adapters.CoordinationAdapter;
+import com.anywhere.campasiliano.adapters.EventAdapter;
 import com.anywhere.campasiliano.adapters.FeedAdapter;
 import com.anywhere.campasiliano.adapters.GroupAdapter;
 import com.anywhere.campasiliano.adapters.LeaderAdapter;
@@ -28,6 +29,7 @@ import com.anywhere.campasiliano.databinding.FragmentHomeBinding;
 import com.anywhere.campasiliano.models.chats.Group;
 import com.anywhere.campasiliano.models.etablishment.Coordination;
 import com.anywhere.campasiliano.models.etablishment.Responsibles;
+import com.anywhere.campasiliano.models.events.Event;
 import com.anywhere.campasiliano.models.posts.RssObject;
 import com.anywhere.campasiliano.models.users.Leader;
 import com.anywhere.campasiliano.models.users.Student;
@@ -58,11 +60,13 @@ public class HomeFragment extends Fragment {
     private List<Coordination> coordinationList;
     private List<Leader> leaderList;
     private List<Group> groupList;
+    private List<Event> eventList;
 
     private ResponsibleAdapter responsibleAdapter;
     private CoordinationAdapter coordinationAdapter;
     private LeaderAdapter leaderAdapter;
     private GroupAdapter groupAdapter;
+    private EventAdapter eventAdapter;
 
     private RssObject rssObject;
     private final String RSS_LINK = "https://www.france24.com/fr/afrique/rss";
@@ -88,6 +92,7 @@ public class HomeFragment extends Fragment {
         coordinationList = new ArrayList<>();
         leaderList = new ArrayList<>();
         groupList = new ArrayList<>();
+        eventList = new ArrayList<>();
 
         binding.recyclerViewResponsible.setNestedScrollingEnabled(false);
         binding.recyclerViewResponsible.setHasFixedSize(true);
@@ -109,7 +114,6 @@ public class HomeFragment extends Fragment {
         binding.recyclerViewEvent.setHasFixedSize(true);
         binding.recyclerViewEvent.setLayoutManager(new GridLayoutManager(requireActivity(), 2));
 
-        postsFeed();
         function();
         binding.swipeHome.setOnRefreshListener(this::function);
 
@@ -117,6 +121,8 @@ public class HomeFragment extends Fragment {
 
     private void function() {
         getResponsibles();
+        postsFeed();
+        events();
     }
 
     private void postsFeed() {
@@ -263,6 +269,34 @@ public class HomeFragment extends Fragment {
             @Override
             public void onCancelled(@NonNull @NotNull DatabaseError error) {
                 error.toException().printStackTrace();
+                binding.swipeHome.setRefreshing(false);
+            }
+        });
+    }
+
+    private void events() {
+        binding.swipeHome.setRefreshing(true);
+        dataReference = database.getReference("events");
+        dataReference.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull @NotNull DataSnapshot snapshot) {
+                if (snapshot.exists()) {
+                    eventList.clear();
+                    for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
+                        Event event = dataSnapshot.getValue(Event.class);
+                        assert event != null;
+                        eventList.add(event);
+                    }
+                    eventAdapter = new EventAdapter(requireActivity(), eventList);
+                    binding.recyclerViewEvent.setAdapter(eventAdapter);
+                    binding.swipeHome.setRefreshing(false);
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull @NotNull DatabaseError error) {
+                error.toException().printStackTrace();
+                binding.swipeHome.setRefreshing(false);
             }
         });
     }

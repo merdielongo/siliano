@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="160dp"
+    android:layout_height="280dp"
+    app:cardBackgroundColor="#B3B3B3"
+    app:cardCornerRadius="12dp"
+    app:cardElevation="5dp"
+    android:id="@+id/cardEvent"
+    android:layout_marginStart="5dp"
+    android:layout_marginBottom="10dp"
+    android:layout_marginLeft="5dp">
+
+    <ImageView
+        android:id="@+id/imgEventCover"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scaleType="centerCrop"
+        android:src="@drawable/img"/>
+
+    <LinearLayout
+        android:layout_gravity="bottom"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:gravity="bottom">
+
+        <LinearLayout
+            android:padding="15dp"
+            android:background="@drawable/b_start"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/txtEventName"
+                android:layout_gravity="start"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/name"
+                android:textColor="@color/white"
+                android:fontFamily="@font/segoeuib"
+                android:textAllCaps="true"
+                android:textSize="13sp"/>
+
+            <TextView
+                android:id="@+id/txtEventDesc"
+                android:layout_gravity="start"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/last_name"
+                android:textColor="@color/silver"
+                android:fontFamily="@font/segoeui"
+                android:textStyle="bold"
+                android:textSize="13sp"/>
+
+            <TextView
+                android:id="@+id/txtEventDate"
+                android:layout_gravity="end"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/cp"
+                android:textColor="@color/purple_700"
+                android:fontFamily="@font/segoeuib"
+                android:textSize="13sp"/>
+
+            <com.google.android.material.button.MaterialButton
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                style="@style/Widget.MaterialComponents.Button.TextButton"
+                app:cornerRadius="20dp"
+                app:strokeWidth="1dp"
+                app:strokeColor="@color/purple_700"
+                android:textColor="@color/purple_700"
+                android:text="@string/go_event"
+                android:id="@+id/btnCheck"/>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</com.google.android.material.card.MaterialCardView>

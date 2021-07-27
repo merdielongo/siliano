@@ -111,4 +111,5 @@
     <string name="description">description</string>
     <string name="default_desc_txt">description</string>
     <string name="adhesion_d">"Adherer "</string>
+    <string name="go_event">Participer</string>
 </resources>
