@@ -126,7 +126,6 @@ public class HomeFragment extends Fragment {
     }
 
     private void postsFeed() {
-        Anywhere.message("test bug");
         AsyncTask<String, String, String> loadRSSAsync = new AsyncTask<String, String, String>() {
 
             ProgressDialog dialog = new ProgressDialog(requireActivity());
@@ -149,7 +148,6 @@ public class HomeFragment extends Fragment {
             protected void onPostExecute(String s) {
                 dialog.dismiss();
                 rssObject = new Gson().fromJson(s, RssObject.class);
-                Anywhere.message("test");
                 FeedAdapter feedAdapter = new FeedAdapter(rssObject, requireContext());
                 binding.recyclerViewPost.setAdapter(feedAdapter);
                 feedAdapter.notifyDataSetChanged();
