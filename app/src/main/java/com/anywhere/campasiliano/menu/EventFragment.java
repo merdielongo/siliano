@@ -2,65 +2,91 @@ package com.anywhere.campasiliano.menu;
 
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.GridLayoutManager;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
 import com.anywhere.campasiliano.R;
+import com.anywhere.campasiliano.adapters.EventAdapter;
+import com.anywhere.campasiliano.databinding.FragmentEventBinding;
+import com.anywhere.campasiliano.models.events.Event;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
-/**
- * A simple {@link Fragment} subclass.
- * Use the {@link EventFragment#newInstance} factory method to
- * create an instance of this fragment.
- */
+import org.jetbrains.annotations.NotNull;
+
+import java.util.ArrayList;
+import java.util.List;
+
+
 public class EventFragment extends Fragment {
 
-    // TODO: Rename parameter arguments, choose names that match
-    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-    private static final String ARG_PARAM1 = "param1";
-    private static final String ARG_PARAM2 = "param2";
-
-    // TODO: Rename and change types of parameters
-    private String mParam1;
-    private String mParam2;
-
-    public EventFragment() {
-        // Required empty public constructor
-    }
-
-    /**
-     * Use this factory method to create a new instance of
-     * this fragment using the provided parameters.
-     *
-     * @param param1 Parameter 1.
-     * @param param2 Parameter 2.
-     * @return A new instance of fragment EventFragment.
-     */
-    // TODO: Rename and change types and number of parameters
-    public static EventFragment newInstance(String param1, String param2) {
-        EventFragment fragment = new EventFragment();
-        Bundle args = new Bundle();
-        args.putString(ARG_PARAM1, param1);
-        args.putString(ARG_PARAM2, param2);
-        fragment.setArguments(args);
-        return fragment;
-    }
+    private FragmentEventBinding binding;
+    private FirebaseDatabase database;
+    private DatabaseReference dataReference;
+    private FirebaseUser firebaseUser;
+    private List<Event> eventList;
+    private EventAdapter eventAdapter;
 
     @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);
-        }
-    }
-
-    @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_event, container, false);
+        binding = FragmentEventBinding.inflate(inflater, container, false);
+        return binding.getRoot();
+    }
+
+    @Override
+    public void onViewCreated(@NonNull @NotNull View view, @Nullable @org.jetbrains.annotations.Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+
+        firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
+        database = FirebaseDatabase.getInstance();
+
+        eventList = new ArrayList<>();
+
+        // event recyclerView
+        binding.recyclerViewEvent.setNestedScrollingEnabled(false);
+        binding.recyclerViewEvent.setHasFixedSize(true);
+        binding.recyclerViewEvent.setLayoutManager(new GridLayoutManager(requireActivity(), 2));
+        this.events();
+
+    }
+
+
+    private void events() {
+        binding.swipeHome.setRefreshing(true);
+        dataReference = database.getReference("events");
+        dataReference.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull @NotNull DataSnapshot snapshot) {
+                if (snapshot.exists()) {
+                    eventList.clear();
+                    for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
+                        Event event = dataSnapshot.getValue(Event.class);
+                        assert event != null;
+                        eventList.add(event);
+                    }
+                    eventAdapter = new EventAdapter(requireActivity(), eventList);
+                    binding.recyclerViewEvent.setAdapter(eventAdapter);
+                    binding.swipeHome.setRefreshing(false);
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull @NotNull DatabaseError error) {
+                error.toException().printStackTrace();
+                binding.swipeHome.setRefreshing(false);
+            }
+        });
     }
 }

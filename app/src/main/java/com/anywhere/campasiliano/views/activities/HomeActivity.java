@@ -109,9 +109,6 @@ public class HomeActivity extends AppCompatActivity {
         });
 
         bottomSheetView.findViewById(R.id.card_event).setOnClickListener(v -> {
-            //MaterialAlertDialogBuilder builder = new MaterialAlertDialogBuilder(this);
-            //builder.setMessage("Sorry cette option ne pas enore disponible");
-            //builder.show();
             FragmentManager fragmentManager = getSupportFragmentManager();
             FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
             fragmentTransaction.replace(R.id.frameHomeContainer, new EventFragment()).commit();
@@ -120,11 +117,14 @@ public class HomeActivity extends AppCompatActivity {
         });
 
         bottomSheetView.findViewById(R.id.card_lesson).setOnClickListener(v -> {
-            FragmentManager fragmentManager = getSupportFragmentManager();
-            FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-            fragmentTransaction.replace(R.id.frameHomeContainer, new CourFragment()).commit();
-            fragmentTransaction.addToBackStack(null);
-            bottomSheetDialog.dismiss();
+            MaterialAlertDialogBuilder builder = new MaterialAlertDialogBuilder(this);
+            builder.setMessage("Aucun cour n'a ete publier");
+            builder.show();
+            //FragmentManager fragmentManager = getSupportFragmentManager();
+            //FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+            //fragmentTransaction.replace(R.id.frameHomeContainer, new CourFragment()).commit();
+            //fragmentTransaction.addToBackStack(null);
+            //bottomSheetDialog.dismiss();
         });
 
         bottomSheetView.findViewById(R.id.card_news).setOnClickListener(v -> {
