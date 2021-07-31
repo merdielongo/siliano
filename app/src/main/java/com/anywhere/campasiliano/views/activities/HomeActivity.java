@@ -1,11 +1,10 @@
 package com.anywhere.campasiliano.views.activities;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
-import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -21,10 +20,8 @@ import com.anywhere.campasiliano.menu.HomeFragment;
 import com.anywhere.campasiliano.menu.NewsFragment;
 import com.anywhere.campasiliano.models.users.User;
 import com.anywhere.campasiliano.utils.anywhere.Anywhere;
-import com.anywhere.campasiliano.utils.anywhere.AnywhereRoute;
+import com.anywhere.campasiliano.views.activities.chats.ChatActivity;
 import com.bumptech.glide.Glide;
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.Task;
 import com.google.android.material.bottomappbar.BottomAppBar;
 import com.google.android.material.bottomsheet.BottomSheetDialog;
 import com.google.android.material.dialog.MaterialAlertDialogBuilder;
@@ -33,8 +30,6 @@ import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-
-import org.jetbrains.annotations.NotNull;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 
@@ -55,7 +50,6 @@ public class HomeActivity extends AppCompatActivity {
         binding = ActivityHomeBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
         Anywhere.activity = this;
-
 
         firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
         database = FirebaseDatabase.getInstance();
@@ -101,6 +95,12 @@ public class HomeActivity extends AppCompatActivity {
 
 
     private void bottomClick() {
+
+        binding.btnMessage.setOnClickListener(v -> {
+            Intent intent = new Intent(getApplicationContext(), HomeActivity.class);
+            Anywhere.start(ChatActivity.class);
+        });
+
         bottomSheetView.findViewById(R.id.card_account).setOnClickListener(v -> {
             FragmentManager fragmentManager = getSupportFragmentManager();
             FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
@@ -109,35 +109,29 @@ public class HomeActivity extends AppCompatActivity {
         });
 
         bottomSheetView.findViewById(R.id.card_event).setOnClickListener(v -> {
-            MaterialAlertDialogBuilder builder = new MaterialAlertDialogBuilder(this);
-            builder.setMessage("Sorry cette option ne pas enore disponible");
-            builder.show();
-            /*FragmentManager fragmentManager = getSupportFragmentManager();
+            //MaterialAlertDialogBuilder builder = new MaterialAlertDialogBuilder(this);
+            //builder.setMessage("Sorry cette option ne pas enore disponible");
+            //builder.show();
+            FragmentManager fragmentManager = getSupportFragmentManager();
             FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
             fragmentTransaction.replace(R.id.frameHomeContainer, new EventFragment()).commit();
-            fragmentTransaction.addToBackStack(null);*/
+            fragmentTransaction.addToBackStack(null);
             bottomSheetDialog.dismiss();
         });
 
         bottomSheetView.findViewById(R.id.card_lesson).setOnClickListener(v -> {
-            MaterialAlertDialogBuilder builder = new MaterialAlertDialogBuilder(this);
-            builder.setMessage("Sorry cette option ne pas enore disponible");
-            builder.show();
-            /*FragmentManager fragmentManager = getSupportFragmentManager();
+            FragmentManager fragmentManager = getSupportFragmentManager();
             FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
             fragmentTransaction.replace(R.id.frameHomeContainer, new CourFragment()).commit();
-            fragmentTransaction.addToBackStack(null);*/
+            fragmentTransaction.addToBackStack(null);
             bottomSheetDialog.dismiss();
         });
 
         bottomSheetView.findViewById(R.id.card_news).setOnClickListener(v -> {
-            MaterialAlertDialogBuilder builder = new MaterialAlertDialogBuilder(this);
-            builder.setMessage("Sorry cette option ne pas enore disponible");
-            builder.show();
-            /*FragmentManager fragmentManager = getSupportFragmentManager();
+            FragmentManager fragmentManager = getSupportFragmentManager();
             FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
             fragmentTransaction.replace(R.id.frameHomeContainer, new NewsFragment()).commit();
-            fragmentTransaction.addToBackStack(null);*/
+            fragmentTransaction.addToBackStack(null);
             bottomSheetDialog.dismiss();
         });
 
