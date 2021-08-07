@@ -133,6 +133,7 @@ public class HomeFragment extends Fragment {
             @Override
             protected void onPreExecute() {
                 dialog.setMessage("Please wait ...");
+                dialog.setCancelable(false);
                 dialog.show();
             }
 
@@ -148,10 +149,15 @@ public class HomeFragment extends Fragment {
             protected void onPostExecute(String s) {
                 dialog.dismiss();
                 rssObject = new Gson().fromJson(s, RssObject.class);
-                FeedAdapter feedAdapter = new FeedAdapter(rssObject, requireContext());
-                binding.recyclerViewPost.setAdapter(feedAdapter);
-                feedAdapter.notifyDataSetChanged();
+                if(rssObject != null) {
+                    FeedAdapter feedAdapter = new FeedAdapter(rssObject, requireContext());
+                    binding.recyclerViewPost.setAdapter(feedAdapter);
+                    feedAdapter.notifyDataSetChanged();
+                }else {
+                    Anywhere.message("Verifier votre connexion internet");
+                }
             }
+
         };
         StringBuilder builder = new StringBuilder(RSS_to_Json_API);
         builder.append(RSS_LINK);

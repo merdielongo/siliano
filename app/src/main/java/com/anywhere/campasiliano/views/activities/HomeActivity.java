@@ -62,6 +62,11 @@ public class HomeActivity extends AppCompatActivity {
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
         fragmentTransaction.replace(R.id.frameHomeContainer, new HomeFragment()).commit();
 
+        binding.btnMessage.setOnClickListener(v -> {
+            Intent intent = new Intent(getApplicationContext(), ChatActivity.class);
+            startActivity(intent);
+        });
+
         binding.bottomApp.setNavigationOnClickListener(v -> {
 
             dataReference.get().addOnCompleteListener(task -> {
@@ -95,11 +100,6 @@ public class HomeActivity extends AppCompatActivity {
 
 
     private void bottomClick() {
-
-        binding.btnMessage.setOnClickListener(v -> {
-            Intent intent = new Intent(getApplicationContext(), HomeActivity.class);
-            Anywhere.start(ChatActivity.class);
-        });
 
         bottomSheetView.findViewById(R.id.card_account).setOnClickListener(v -> {
             FragmentManager fragmentManager = getSupportFragmentManager();
@@ -147,6 +147,10 @@ public class HomeActivity extends AppCompatActivity {
         });
 
         bottomSheetView.findViewById(R.id.card_setting).setOnClickListener(v -> {
+            MaterialAlertDialogBuilder builder = new MaterialAlertDialogBuilder(this);
+            builder.setMessage("Sorry cette option ne pas enore disponible");
+            builder.show();
+            bottomSheetDialog.dismiss();
             //Anywhere.start(SettingsActivity.class);
         });
     }

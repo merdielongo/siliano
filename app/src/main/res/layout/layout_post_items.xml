@@ -25,7 +25,7 @@
                 android:textAllCaps="false"
                 app:elevation="16dp"
                 android:layout_width="wrap_content"
-                android:layout_height="38dp"
+                android:layout_height="wrap_content"
                 app:icon="@drawable/elipse"
                 app:iconTint="@color/teal_200"
                 app:iconSize="8dp"

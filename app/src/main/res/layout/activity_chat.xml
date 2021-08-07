@@ -100,9 +100,9 @@
         android:layout_height="wrap_content"
         android:id="@+id/tab_layout"
         android:background="@color/white"
-        app:tabSelectedTextColor="@color/white"
-        app:tabIndicatorColor="@color/white"
-        app:tabTextColor="@color/white"
+        app:tabSelectedTextColor="@color/purple_700"
+        app:tabIndicatorColor="@color/purple_700"
+        app:tabTextColor="@color/purple_700"
         app:tabTextAppearance="@style/MenuTextStyle"/>
 
     <androidx.viewpager.widget.ViewPager
