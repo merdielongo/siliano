@@ -11,6 +11,7 @@ import android.os.Handler;
 import com.anywhere.campasiliano.R;
 import com.anywhere.campasiliano.views.activities.HomeActivity;
 import com.anywhere.campasiliano.views.activities.MainActivity;
+import com.anywhere.campasiliano.views.activities.StateHomeActivity;
 import com.anywhere.campasiliano.views.activities.auth.StudentInfoActivity;
 import com.anywhere.campasiliano.views.activities.auth.UserInfoActivity;
 import com.google.firebase.auth.FirebaseAuth;
@@ -28,17 +29,7 @@ public class SplashScreenActivity extends AppCompatActivity {
         SharedPreferences userPref = getApplicationContext().getSharedPreferences("user", Context.MODE_PRIVATE);
         Handler handler = new Handler();
         handler.postDelayed(this::run, 3000);
-//        if(firebaseUser != null) {
-//            new Handler().postDelayed(() -> {
-//                startActivity(new Intent(getApplicationContext(), MainActivity.class));
-//                finish();
-//            }, 3000);
-//        }else {
-//            new Handler().postDelayed(() -> {
-//                startActivity(new Intent(getApplicationContext(), WelcomeScreenActivity.class));
-//                finish();
-//            }, 3000);
-//        }
+        startActivity(new Intent(getApplicationContext(), StateHomeActivity.class));
     }
 
     private void run() {

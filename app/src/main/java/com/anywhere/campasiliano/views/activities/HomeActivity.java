@@ -63,7 +63,7 @@ public class HomeActivity extends AppCompatActivity {
         fragmentTransaction.replace(R.id.frameHomeContainer, new HomeFragment()).commit();
 
         binding.btnMessage.setOnClickListener(v -> {
-            Intent intent = new Intent(getApplicationContext(), ChatActivity.class);
+            Intent intent = new Intent(getApplicationContext(), StateHomeActivity.class);
             startActivity(intent);
         });
 

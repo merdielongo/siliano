@@ -21,6 +21,7 @@ import com.anywhere.campasiliano.models.users.User;
 import com.anywhere.campasiliano.utils.anywhere.Anywhere;
 import com.anywhere.campasiliano.views.activities.startup.WelcomeScreenActivity;
 import com.anywhere.campasiliano.views.fragments.ChatsFragment;
+import com.anywhere.campasiliano.views.fragments.ConversationFragment;
 import com.anywhere.campasiliano.views.fragments.LessonFragment;
 import com.anywhere.campasiliano.views.fragments.ProfileFragment;
 import com.anywhere.campasiliano.views.fragments.UsersFragment;
@@ -60,7 +61,7 @@ public class MainActivity extends AppCompatActivity {
 
 
         ViewPageAdapter pageAdapter = new ViewPageAdapter(getSupportFragmentManager());
-        pageAdapter.addFragment(new ChatsFragment(), "Chats");
+        pageAdapter.addFragment(new ConversationFragment(), "Messages");
         pageAdapter.addFragment(new UsersFragment(), "Mes colleges");
         pageAdapter.addFragment(new LessonFragment(), "Mes cours");
         pageAdapter.addFragment(new ProfileFragment(), "Profile");
