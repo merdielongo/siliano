@@ -102,9 +102,9 @@ public class ChatsFragment extends Fragment {
 
                     for (ChatList chatList : usersList) {
                         assert user != null;
-                        if (user.getUser_id().equals(chatList.getId())) {
-                            mUsers.add(user);
-                        }
+//                        if (user.getUser_id().equals(chatList.getId())) {
+//                            mUsers.add(user);
+//                        }
                     }
                 }
                 userAdapter = new UserAdapter(requireActivity(), mUsers, true);

@@ -32,7 +32,7 @@ public class StateHomeActivity extends AppCompatActivity {
         binding = ActivityStateHomeBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
         setUpWithViewPager(binding.viewPager);
-        setSupportActionBar(binding.toolbar);
+        //setSupportActionBar(binding.toolbar);
         Anywhere.activity = this;
         binding.tabLayout.setupWithViewPager(binding.viewPager);
         binding.viewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
@@ -50,6 +50,9 @@ public class StateHomeActivity extends AppCompatActivity {
             public void onPageScrollStateChanged(int state) {
 
             }
+        });
+        binding.fabAction.setOnClickListener(v ->{
+
         });
     }
 

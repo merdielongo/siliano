@@ -3,8 +3,13 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/Elongo/Documents/Projects/siliano/app/src/main/res/layout/activity_contact.xml" value="0.27291666666666664" />
+        <entry key="..\:/Users/Elongo/Documents/Projects/siliano/app/src/main/res/layout/activity_home.xml" value="0.27291666666666664" />
         <entry key="..\:/Users/Elongo/Documents/Projects/siliano/app/src/main/res/layout/activity_state_home.xml" value="0.2608695652173913" />
+        <entry key="..\:/Users/Elongo/Documents/Projects/siliano/app/src/main/res/layout/activity_welcome_screen.xml" value="0.27291666666666664" />
+        <entry key="..\:/Users/Elongo/Documents/Projects/siliano/app/src/main/res/layout/fragment_conversation.xml" value="0.25885416666666666" />
         <entry key="..\:/Users/Elongo/Documents/Projects/siliano/app/src/main/res/layout/fragment_notification.xml" value="0.25885416666666666" />
+        <entry key="..\:/Users/Elongo/Documents/Projects/siliano/app/src/main/res/layout/layout_chat_list.xml" value="0.27291666666666664" />
         <entry key="app/src/main/res/layout/activity_chat.xml" value="0.23981481481481481" />
         <entry key="app/src/main/res/layout/activity_home.xml" value="0.25092592592592594" />
         <entry key="app/src/main/res/layout/layout_post_items.xml" value="0.23981481481481481" />

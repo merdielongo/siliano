@@ -3,12 +3,47 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".views.fragments.ConversationFragment">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <androidx.recyclerview.widget.RecyclerView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        android:id="@+id/recyclerView"/>
+
+    <LinearLayout
+        android:visibility="gone"
+        android:id="@+id/ln_invite"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:gravity="center_horizontal"
+        android:layout_marginTop="30dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/friends"
+            android:textSize="25sp"
+            android:textColor="@color/black"
+            android:layout_marginBottom="20dp"/>
+
+
+
+        <com.google.android.material.button.MaterialButton
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="30dp"
+            android:layout_marginEnd="30dp"
+            style="@style/Widget.MaterialComponents.Button.TextButton"
+            app:backgroundTint="@color/purple_700"
+            app:cornerRadius="0dp"
+            android:textColor="@color/white"
+            android:padding="15dp"
+            android:id="@+id/btn_invite"
+            android:layout_marginBottom="30dp"
+            android:text="@string/invite"/>
+
+    </LinearLayout>
 
 </FrameLayout>
