@@ -15,6 +15,7 @@ import com.anywhere.campasiliano.R;
 import com.anywhere.campasiliano.databinding.ActivityStateHomeBinding;
 import com.anywhere.campasiliano.menu.NewsFragment;
 import com.anywhere.campasiliano.utils.anywhere.Anywhere;
+import com.anywhere.campasiliano.views.activities.users.ContactsActivity;
 import com.anywhere.campasiliano.views.fragments.ChatsFragment;
 import com.anywhere.campasiliano.views.fragments.ConversationFragment;
 import com.anywhere.campasiliano.views.fragments.NotificationFragment;
@@ -52,7 +53,7 @@ public class StateHomeActivity extends AppCompatActivity {
             }
         });
         binding.fabAction.setOnClickListener(v ->{
-
+            Anywhere.start(ContactsActivity.class);
         });
     }
 

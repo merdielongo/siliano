@@ -29,7 +29,7 @@ public class SplashScreenActivity extends AppCompatActivity {
         SharedPreferences userPref = getApplicationContext().getSharedPreferences("user", Context.MODE_PRIVATE);
         Handler handler = new Handler();
         handler.postDelayed(this::run, 3000);
-        startActivity(new Intent(getApplicationContext(), StateHomeActivity.class));
+        //startActivity(new Intent(getApplicationContext(), StateHomeActivity.class));
     }
 
     private void run() {

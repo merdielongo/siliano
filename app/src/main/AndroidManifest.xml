@@ -20,6 +20,12 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Campasiliano">
         <activity
+            android:name=".views.activities.users.ContactsActivity"
+            android:exported="true" />
+        <activity
+            android:name=".views.activities.users.UserProfileActivity"
+            android:exported="true" />
+        <activity
             android:name=".views.activities.chats.ChatsActivity"
             android:exported="true" />
         <activity

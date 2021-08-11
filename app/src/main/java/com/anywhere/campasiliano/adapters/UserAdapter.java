@@ -18,6 +18,7 @@ import com.anywhere.campasiliano.databinding.UserItemBinding;
 import com.anywhere.campasiliano.models.chats.Chat;
 import com.anywhere.campasiliano.models.users.User;
 import com.anywhere.campasiliano.utils.anywhere.Anywhere;
+import com.anywhere.campasiliano.views.activities.chats.ChatsActivity;
 import com.anywhere.campasiliano.views.activities.chats.MessageActivity;
 import com.bumptech.glide.Glide;
 import com.google.firebase.auth.FirebaseAuth;
@@ -27,6 +28,7 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+
 
 import org.jetbrains.annotations.NotNull;
 
@@ -86,8 +88,10 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.ViewHolder> {
         }
 
         holder.itemView.setOnClickListener(v -> {
-            Intent intent = new Intent(mContext, MessageActivity.class);
-            intent.putExtra("uid", user.getUser_id());
+            Intent intent = new Intent(mContext, ChatsActivity.class);
+            intent.putExtra("userId", user.getUser_id());
+            intent.putExtra("imageProfile", user.getImageUrl());
+            intent.putExtra("userName", user.getName());
             mContext.startActivity(intent);
         });
     }
@@ -118,34 +122,34 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.ViewHolder> {
     }
 
     private void lastMessage(String uid, TextView last_msg) {
-        theLastMessage = "default";
-        FirebaseUser firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
-        DatabaseReference reference = FirebaseDatabase.getInstance().getReference("chats");
-        reference.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull @NotNull DataSnapshot snapshot) {
-                for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
-                    Chat chat = dataSnapshot.getValue(Chat.class);
-                    if (chat.getReceiver().equals(firebaseUser.getUid()) && chat.getSender().equals(uid) || chat.getReceiver().equals(uid) && chat.getSender().equals(firebaseUser.getUid())) {
-                        theLastMessage = chat.getMessage();
-                    }
-                }
-
-                switch (theLastMessage) {
-                    case "default":
-                        last_msg.setText("No message");
-                        break;
-                    default:
-                        last_msg.setText(theLastMessage);
-                        break;
-                }
-                theLastMessage = "default";
-            }
-
-            @Override
-            public void onCancelled(@NonNull @NotNull DatabaseError error) {
-
-            }
-        });
+//        theLastMessage = "default";
+//        FirebaseUser firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
+//        DatabaseReference reference = FirebaseDatabase.getInstance().getReference("chats");
+//        reference.addValueEventListener(new ValueEventListener() {
+//            @Override
+//            public void onDataChange(@NonNull @NotNull DataSnapshot snapshot) {
+//                for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
+//                    Chat chat = dataSnapshot.getValue(Chat.class);
+//                    if (chat.getReceiver().equals(firebaseUser.getUid()) && chat.getSender().equals(uid) || chat.getReceiver().equals(uid) && chat.getSender().equals(firebaseUser.getUid())) {
+//                        theLastMessage = chat.getMessage();
+//                    }
+//                }
+//
+//                switch (theLastMessage) {
+//                    case "default":
+//                        last_msg.setText("No message");
+//                        break;
+//                    default:
+//                        last_msg.setText(theLastMessage);
+//                        break;
+//                }
+//                theLastMessage = "default";
+//            }
+//
+//            @Override
+//            public void onCancelled(@NonNull @NotNull DatabaseError error) {
+//
+//            }
+//        });
     }
 }
